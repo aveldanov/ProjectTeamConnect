@@ -13,14 +13,14 @@ const config = require('config');
 
 router.post('/', [
   check('name',
-    'Name is required')
+    '[api/users] Name is required')
     .not()
     .isEmpty(),
   check('email',
-    'Please include a valid email')
+    '[api/users] Please include a valid email')
     .isEmail(),
   check('password',
-    'Please enter a password with 6 or more characters')
+    '[api/users] Please enter a password with 6 or more characters')
     .isLength({ min: 6 })
 ],
   async (req, res) => {
@@ -45,7 +45,7 @@ router.post('/', [
       if (user) {
         return res.status(400).json({
           errors: [
-            { msg: 'User already exists' }
+            { msg: '[api/users] User already exists' }
           ]
         });
       }
@@ -95,7 +95,7 @@ router.post('/', [
 
     } catch (err) {
       console.log(err);
-      res.status(500).send('Server Error')
+      res.status(500).send('[api/users] Server Error')
 
     }
 

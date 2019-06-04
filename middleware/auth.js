@@ -7,7 +7,7 @@ module.exports = (req, res, next) => {
 
   // Check if no token
   if (!token) {
-    return res.status(401).json({ msg: 'No token, authorization denied' })
+    return res.status(401).json({ msg: '[middleware/auth] No token, authorization denied' })
   }
 
   // Verify token
@@ -17,7 +17,7 @@ module.exports = (req, res, next) => {
     req.user = decoded.user;
     next();
   } catch (err) {
-    res.status(401).json({ msg: 'Tokeb is not valid' });
+    res.status(401).json({ msg: '[middleware/auth] Token is not valid' });
   }
 
 }
