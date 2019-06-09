@@ -62,6 +62,7 @@ img{
   background-color: $light-color;
   background: url('../img/connectwork.png');
   height: 100vh;
+
   &-inner{
     color:#fff;
     height: 100%;
@@ -86,6 +87,7 @@ img{
   align-items: center;
   padding: 1rem;
   margin-bottom: 1rem;
+  line-height: 1.8;
 }
 
 
@@ -173,3 +175,29 @@ p{
   }
 
 }
+
+
+// Post page
+
+.post-form-header{
+  padding: 0.5rem;
+}
+
+.post{
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-gap:2rem;
+  align-items: center;
+  &>div:first-child{
+    text-align: center;
+  }
+  img{
+    width: 150px;
+  }
+}
+
+
+@import 'mobile';
+
+
+
