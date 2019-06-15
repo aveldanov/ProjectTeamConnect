@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 
 export class form extends Component {
 
@@ -41,8 +43,6 @@ export class form extends Component {
         console.log(item.name);
         console.log("i =", i);
         console.log("j =", j);
-
-
         return i !== j
       })
     })
@@ -52,21 +52,41 @@ export class form extends Component {
   render() {
     return (
       <div>
+
+
         <ul>
-          {this.state.names.map((item, index) => {
-            return <li key={index}>{item.name} <button onClick={() => this.handleDelete(index)}>Delete</button></li>
-          })}
+          {
+            this.props.nms.map((item, index) => {
+              return <li key={index}>{item.name} <button onClick={() => this.props.onDeleteName(index)}>Delete</button></li>
+            })}
         </ul>
 
 
 
-        <h3>{this.state.value}</h3>
+        <h3>{this.props.val}</h3>
 
-        <input onChange={this.handleChange} value={this.state.value} />
-        <button onClick={this.handleAdd}>Add item</button>
+        <input onChange={this.handleChange} value={this.props.val} />
+        <button onClick={this.props.onAddName}>Add item</button>
       </div>
     )
   }
 }
 
-export default form
+const mapStateToProps = state => {
+  console.log(state);
+
+  return {
+    nms: state.names,
+    val: state.value
+  }
+}
+
+const mapDispatchToProps = (dispatch, index) => {
+  return ({
+    onAddName: () => dispatch({ type: 'ADD_NAME' }),
+    onDeleteName: (index) => dispatch({ type: 'DELETE_NAME', index })
+  })
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(form);
