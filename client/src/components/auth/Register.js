@@ -41,11 +41,9 @@ const Register = ({ setAlert }) => {
     if (password !== password2) {
       // console.log('Passwords do not match');
 
-      setAlert('Passwords do not match', 'danger', 1000)
+      await setAlert('Passwords do not match', 'danger', 1000)
     } else {
       console.log(formData);
-
-
     }
   }
 

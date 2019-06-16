@@ -4,7 +4,9 @@ import alert from './alert';
 
 
 
+const rootReducer = combineReducers({
+  alert: alert
+});
 
-export default combineReducers({
-  alert
-})
+export default rootReducer;
+
